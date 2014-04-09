@@ -10,12 +10,11 @@ object Application extends Controller {
     Ok(views.html.index(""))
   }
 
-  def socket = WebSocket.using[String] { request =>
+  def socket = WebSocket.using[String] { _ =>
     val (out,channel) = Concurrent.broadcast[String]
     val in = Iteratee.foreach[String] {
       msg => channel.push(msg)
     }
-
     (in,out)
   }
 }
