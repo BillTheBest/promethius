@@ -1,4 +1,5 @@
-This is your new Play application
-=====================================
+# Ripley
 
-This file will be packaged with your application, when using `play dist`.
+An experiment in building real time reactive applications using Websockets and Actors
+
+
