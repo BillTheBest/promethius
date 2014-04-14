@@ -8,6 +8,8 @@ import play.api.libs.ws._
 
 import scala.concurrent.ExecutionContext.Implicits._
 import scala.concurrent.duration._
+import scala.concurrent.Future
+import play.api.libs.iteratee.Concurrent.Channel
 
 case class Message(msg: String)
 
@@ -22,17 +24,16 @@ class Scheduler extends Actor {
 object ScheduleRunner {
 
   val system = ActorSystem("scheduler")
+
   val scheduleActor = system.actorOf(Props[Scheduler], name = "scheduler")
 
-  // Every 5 seconds query JSON from the API and push it to our websocket !
-  def sendMessage() = {
+  def sendMessage(channel: Channel[String]): Future[Unit] = {
     WS.url("http://time.jsontest.com").get().map { response =>
-      scheduleActor ! Message(response.body)
+      channel.push(response.body)
     }
   }
 
-  def start() = {
-    system.scheduler.schedule(0 seconds, 5 seconds)(sendMessage())
+  def start(channel: Channel[String]) = {
+    system.scheduler.schedule(0 seconds, 5 seconds) { sendMessage(channel) }
   }
-
 }
