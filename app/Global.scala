@@ -11,11 +11,11 @@ object Global extends GlobalSettings {
 
     Logger.info("Application has started")
 
-    val w = new PollingWidget()
-    val u = new LoggingWidget()
+    val w = new PollingWidget("http://time.jsontest.com")
+    Scheduler.start(w.run)
 
-    Scheduler.start(Application.channel, w.run)
-    Scheduler.start(Application.channel, u.run)
+    val u = new LoggingWidget()
+    Scheduler.start(u.run)
   }
 
   override def onStop(app: Application) {
