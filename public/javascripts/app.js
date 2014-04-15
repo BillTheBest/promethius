@@ -4,9 +4,9 @@ function updateValue(value) {
 }
 
 function updateDashboard(message) {
+    console.log(message.data);
     var msgData = message.data;
     var json = JSON.parse(msgData);
-
     updateValue(json.time);
 }
 

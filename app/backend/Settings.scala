@@ -1,12 +1,15 @@
 package backend
 
-import com.typesafe.config.Config
+import play.api.Play
+import play.api.Play.current
 
-class Settings(config: Config) {
+object Settings {
+
+  val config = Play.configuration
 
   /**
-   * The maximum number of connections
+   * How often to make polling updates
    *
    */
-  val maxConnections = config.getInt("ripley.maxConnections")
+  val pollFrequency = config.getInt("ripley.pollingFrequency").getOrElse(5)
 }

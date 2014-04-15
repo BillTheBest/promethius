@@ -2,15 +2,16 @@ package controllers
 
 import play.api.mvc._
 import play.api.libs.iteratee.{Enumerator, Concurrent, Iteratee}
-import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.iteratee.Concurrent.Channel
-import actors.ScheduleRunner
-
-case class Start(out: Concurrent.Channel[String])
+import play.api.libs.concurrent.Execution.Implicits._
 
 object Application extends Controller {
 
-  val eventQueue = List()
+  val (out: Enumerator[String], channel: Channel[String]) = Concurrent.broadcast[String]
+
+  private val in = Iteratee.foreach[String] { msg => channel.push(msg) }
+
+  val webSocket = (in, out)
 
   def index = Action { implicit request =>
     Ok(views.html.index(""))
@@ -21,13 +22,7 @@ object Application extends Controller {
   }
 
   // The web socket
-  def socket = WebSocket.using[String] { _ =>
-
-    val (out: Enumerator[String], channel: Channel[String]) = Concurrent.broadcast[String]
-    val in = Iteratee.foreach[String] { msg => channel.push(msg) }
-
-    ScheduleRunner.start(channel)
-
-    (in,out)
+  def socket: WebSocket[String] = WebSocket.using[String] { _ =>
+    webSocket
   }
 }

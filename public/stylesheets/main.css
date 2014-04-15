@@ -8,4 +8,7 @@ body {
   height: 400px;
   width: 400px;
   padding: 48px;
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 12px;
 }

@@ -1,39 +1,17 @@
 package actors
 
-import akka.actor.Actor
 import akka.actor.ActorSystem
-import akka.actor.Props
-
-import play.api.libs.ws._
-
-import scala.concurrent.ExecutionContext.Implicits._
 import scala.concurrent.duration._
-import scala.concurrent.Future
+import backend.Settings
+import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.iteratee.Concurrent.Channel
 
-case class Message(msg: String)
-
-class Scheduler extends Actor {
-
-  def receive = {
-    case Message(v) => println(v)
-    case _          => println("Bad message")
-  }
-}
-
-object ScheduleRunner {
+object Scheduler {
 
   val system = ActorSystem("scheduler")
 
-  val scheduleActor = system.actorOf(Props[Scheduler], name = "scheduler")
-
-  def sendMessage(channel: Channel[String]): Future[Unit] = {
-    WS.url("http://time.jsontest.com").get().map { response =>
-      channel.push(response.body)
-    }
-  }
-
-  def start(channel: Channel[String]) = {
-    system.scheduler.schedule(0 seconds, 5 seconds) { sendMessage(channel) }
+  def start(channel: Channel[String], f: Channel[String] => Any) = {
+    println("Starting scheduler")
+    system.scheduler.schedule(0 seconds, Settings.pollFrequency seconds) { f(channel) }
   }
 }
