@@ -2,6 +2,8 @@
 
 Ripley is an easy to use monitoring dashboard written in Scala. It uses websockets to push real time updates directly to the board.
 
+![](https://raw.githubusercontent.com/owainlewis/ripley/master/public/images/preview.png)
+
 ## Concept
 
 Ripley is designed to be simple and easy to userstand. There are two main concepts that you'll need to understand when creating widgets.
