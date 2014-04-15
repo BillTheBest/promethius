@@ -1,14 +1,31 @@
-function updateValue(value, label) {
-    $(".widget .value").html(value + "<span> " + label + "</span>");
+function updateValue(value) {
+    $(".widget .value").html(value);
+}
+
+function metricsWidget(json) {
+    $('.metrics .value').html(json.users.length);
+}
+
+function timeWidget(json) {
+  $('.time .value').html(json.time);
+}
+
+function renderMetric(message) {
+
+    var v = JSON.parse(message.value);
+
+    if (message.key === "metrics") {
+      metricsWidget(v);
+    }
+    if (message.key === "time") {
+      timeWidget(v)
+    }
 }
 
 function updateDashboard(message) {
-    console.log(message.data);
-    var msgData = message.data;
-    var json = JSON.parse(msgData);
-    //updateValue(json.time);
-    var numberOfUsers = json.users.length;
-    updateValue(numberOfUsers, "users");
+    var message = JSON.parse(message.data);
+    console.log(message);
+    renderMetric(message);
 }
 
 $(document).ready(function() {

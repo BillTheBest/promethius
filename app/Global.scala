@@ -8,10 +8,10 @@ object Global extends GlobalSettings {
 
   def runWidgets() {
 
-    val w = new PollingWidget("http://time.jsontest.com")
+    val w = new PollingWidget("time", "http://time.jsontest.com")
     Scheduler.start(w.run)
 
-    val u = new PollingWidget("http://www.frequency.io/metrics")
+    val u = new PollingWidget("metrics", "http://www.frequency.io/metrics")
     Scheduler.start(u.run)
   }
 
