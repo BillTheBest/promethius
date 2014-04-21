@@ -37,6 +37,20 @@ When an event is pushed to the channel the JavaScript front end looks for the ke
 
 The scheduler takes a single function with no parameters and a polling interval in seconds.
 
+
+```scala
+
+import actors.Scheduler
+
+object Global extends GlobalSettings {
+  def startApplication() {
+    val a = new TimeWidget("time")
+    Scheduler.start(a.run, 10) // call the run function every 10 seconds
+  }
+}
+
+```
+
 Let's take a look at the simplest possible widget which pushes a Random integer to the front end every 10 seconds. We will start with the Scala code.
 
 ```scala
@@ -45,21 +59,36 @@ package widgets
 import backend.SocketChannel
 import scala.util.Random.nextInt
 
- class SimpleWidget(key: String) extends Widget {
+class SimpleWidget(key: String) extends Widget {
   def run() = {
     SocketChannel.push(key, nextInt(1000).toString)
   }
 }
-
 ```
 
-## Simple widgets
+Now the markup which lives in app/views/index.html
 
-Here is a simple widget that polls JSON from a web endpoint
+```html
+<div data-key="random-number" class="widget blue">
+  <div class="value"></div>
+</div>
+```
+
+And finally let's hook up the widget to a scheduler and run it every 5 seconds
 
 ```scala
- val w = new PollingWidget("http://time.jsontest.com")
- Scheduler.start(w.run)
+
+import actors.Scheduler
+
+object MyApp {
+
+  def start() = {
+    val a = new TimeWidget("time")
+    Scheduler.start(a.run, 5)
+  }
+}
 ```
+
+Feel free to submit a pull request if you have ideas.
 
 

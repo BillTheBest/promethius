@@ -3,20 +3,17 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>@title</title>
-
-        <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/main.css")'>
-        <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/vendor/c3.css")'>
-        <script src='@routes.Assets.at("javascripts/app.js")'></script>
-        <script src='@routes.Assets.at("javascripts/widgets.js")'></script>
-
-    </head>
-    <body>
-        <div class="container">
-            @content
-        </div>
-    </body>
+  <head>
+    <title>@title</title>
+    <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/main.css")'>
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/vendor/c3.css")'>
+    <script src='@routes.Assets.at("javascripts/app.js")'></script>
+  </head>
+  <body>
+    <div class="container">
+      @content
+    </div>
+  </body>
 </html>
