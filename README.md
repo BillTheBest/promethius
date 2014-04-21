@@ -28,9 +28,8 @@ When an event is pushed to the channel the JavaScript front end looks for the ke
 
 
 ```html
-<div data-key="random-number" class="widget red">
-  <p>The value of my number is</p>
-  <div class="value"></div>
+<div data-key="greeting" class="widget red">
+  <div class="value"></div> <!-- this will update to OH HAI when hooked up -->
 </div>
 
 ```
