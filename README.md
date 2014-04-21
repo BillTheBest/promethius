@@ -54,7 +54,11 @@ object Global extends GlobalSettings {
 
 ```
 
+## A full example
+
 Let's take a look at the simplest possible widget which pushes a Random integer to the front end every 10 seconds. We will start with the Scala code.
+
+Some example widgets are available in app/widgets to help you get started
 
 ```scala
 package widgets
@@ -77,7 +81,7 @@ Now the markup which lives in app/views/index.html
 </div>
 ```
 
-And finally let's hook up the widget to a scheduler and run it every 5 seconds
+And finally let's hook up the widget to a scheduler and run it every 5 seconds. This is done in app/Global.scala
 
 ```scala
 
@@ -91,6 +95,8 @@ object MyApp {
   }
 }
 ```
+
+## Want to help?
 
 Feel free to submit a pull request if you have ideas.
 
