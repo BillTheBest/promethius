@@ -2,11 +2,9 @@
 
 ### A fast and easy way to build a real time websocket dashboard
 
-Ripley is an easy to use monitoring dashboard written in Scala. 
-
-It uses websockets to push real time updates directly to the board.
-
-The idea is to give you "just enough" to build great looking real-time dashboards while allowing you the freedom to customize things easily.
+Ripley is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly 
+to the board. The idea is to give you "just enough" to build great looking real-time dashboards 
+while allowing you the freedom to customise things easily.
 
 ![](https://raw.githubusercontent.com/owainlewis/ripley/master/public/images/pv.png)
 
@@ -94,8 +92,8 @@ import actors.Scheduler
 object MyApp {
 
   def start() = {
-    val a = new TimeWidget("time")
-    Scheduler.start(a.run, 5)
+    val b = new SimpleWidget("random-number")
+    Scheduler.start(b.run, 5)
   }
 }
 ```
