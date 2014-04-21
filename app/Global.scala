@@ -8,11 +8,14 @@ object Global extends GlobalSettings {
 
   def runWidgets() {
 
-    val w = new PollingWidget("time", "http://time.jsontest.com")
-    Scheduler.start(w.run)
+    val a = new TimeWidget("time")
+    Scheduler.start(a.run, 1)
 
-    val u = new PollingWidget("metrics", "http://www.frequency.io/metrics")
-    Scheduler.start(u.run)
+    val b = new SimpleWidget("random-number")
+    Scheduler.start(b.run, 5)
+
+    val c = new OnlineWidget("github-status", "http://github.com")
+    Scheduler.start(c.run, 60)
   }
 
   override def onStart(app: Application) {

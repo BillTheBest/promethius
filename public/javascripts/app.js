@@ -1,37 +1,27 @@
-function updateValue(value) {
-    $(".widget .value").html(value);
-}
+(function() {
 
-function metricsWidget(json) {
-    $('.metrics .value').html(json.users.length);
-}
-
-function timeWidget(json) {
-  $('.time .value').html(json.time);
-}
-
-function renderMetric(message) {
-
-    var v = JSON.parse(message.value);
-
-    if (message.key === "metrics") {
-      metricsWidget(v);
+    function updateMetric(key, value) {
+        var element = document.querySelector('[data-key="' + key + '"]');
+        if(element) {
+            element.querySelector(".value").innerHTML = value;
+        } else {
+            console.log("ERROR: Metric with key \"" + key + "\" given but no matching widget found");
+        }
     }
-    if (message.key === "time") {
-      timeWidget(v)
+
+    function updateDashboard(message) {
+        var m = JSON.parse(message.data);
+        updateMetric(m.key, m.value);
     }
-}
 
-function updateDashboard(message) {
-    var message = JSON.parse(message.data);
-    console.log(message);
-    renderMetric(message);
-}
+    function webSocketConnect() {
+        var ws = new WebSocket("ws://localhost:9000/socket");
+        ws.onopen = function() {
+            console.log("Web socket connected");
+            ws.onmessage = updateDashboard;
+        };
+    }
 
-$(document).ready(function() {
-    var ws = new WebSocket("ws://localhost:9000/socket");
-    ws.onopen = function() {
-        ws.onmessage =  updateDashboard
-        ws.onerror = function(err) { console.log(err) }
-  }
-})
+    window.onload = webSocketConnect();
+
+}());

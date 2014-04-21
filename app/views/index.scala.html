@@ -1,15 +1,22 @@
 @(message: String)
 
-
 @main("Dashboard") {
 
-  <div class="widget metrics green">
-    <h1 class="value"></h1>
-    <p>This is my widget</p>
+  <div data-key="github-status" class="widget blue">
+    <p>Github is currently</p>
+    <div class="value"></div>
   </div>
 
-  <div class="widget time red">
-    <h1 class="value"></h1>
+  <div data-key="random-number" class="widget red">
+    <div class="value"></div>
   </div>
 
+  <div data-key="time" class="widget dark last">
+    <div class="value"></div>
+  </div>
+
+  <div data-key="static" class="widget full dark">
+    <div class="value"></div>
+    <p>Users in the last 20 minutes</p>
+  </div>
 }
