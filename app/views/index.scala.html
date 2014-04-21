@@ -2,21 +2,29 @@
 
 @main("Dashboard") {
 
+  <header>
+    <h1>Global Corp Metrics</h1>
+  </header>
+
   <div data-key="github-status" class="widget blue">
-    <p>Github is currently</p>
     <div class="value"></div>
+    <p>Showing status for github.com</p>
   </div>
 
   <div data-key="random-number" class="widget red">
     <div class="value"></div>
+    <p>Visitors in the last hour</p>
   </div>
 
   <div data-key="time" class="widget dark last">
+    <p>The current time is</p>
     <div class="value"></div>
   </div>
 
-  <div data-key="static" class="widget full dark">
-    <div class="value"></div>
+  <div data-key="static" class="widget full aqua">
+    <div class="value">567</div>
     <p>Users in the last 20 minutes</p>
   </div>
+
+
 }
