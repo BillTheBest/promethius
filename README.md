@@ -10,7 +10,9 @@ The idea is to give you "just enough" to build great looking real-time dashboard
 
 Ripley is designed to be simple and easy to understand. There are two main concepts that you'll need to understand when creating widgets.
 
-1. A global web-socket channel is exposed in Scala code to which you can push data to. You push a "key" and a "value" to the channel. I.e
+### 1. Websocket Channel
+
+A global web-socket channel is exposed in Scala code to which you can push data to. You push a "key" and a "value" to the channel. I.e
 
 ```scala
 
@@ -33,7 +35,9 @@ When an event is pushed to the channel the JavaScript front end looks for the ke
 
 ```
 
-2. A scheduler is provided for running tasks at specific intervals.
+### 2. Scheduler
+
+A scheduler is provided for running tasks at specific intervals.
 
 The scheduler takes a single function with no parameters and a polling interval in seconds.
 
