@@ -13,9 +13,15 @@
         var m = JSON.parse(message.data);
         updateMetric(m.key, m.value);
     }
+    
+    // We need to dynamically build the URL for different hosts
+    function urlForWs() {        
+        return "ws://" + window.location.host + "/socket"
+    }
 
     function webSocketConnect() {
-        var ws = new WebSocket("ws://localhost:9000/socket");
+        var socketUrl = urlForWs();
+        var ws = new WebSocket(socketUrl);
         ws.onopen = function() {
             console.log("Web socket connected");
             ws.onmessage = updateDashboard;
