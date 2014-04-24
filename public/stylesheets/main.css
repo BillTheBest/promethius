@@ -20,8 +20,8 @@ header h1 {
 
 .widget {
   background: #333;
-  height: 400px;
   padding: 48px 12px;
+  min-height: 300px;
   text-align: center;
   margin: 0 0 24px 0;
   color: rgba(255,255,255,0.7);
