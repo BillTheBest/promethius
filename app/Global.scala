@@ -12,10 +12,10 @@ object Global extends GlobalSettings {
     Scheduler.start(a.run, 1)
 
     val b = new SimpleWidget("random-number")
-    Scheduler.start(b.run, 5)
+    Scheduler.start(b.run, 2)
 
     val c = new OnlineWidget("github-status", "http://github.com")
-    Scheduler.start(c.run, 60)
+    Scheduler.start(c.run, 5)
   }
 
   override def onStart(app: Application) {
