@@ -9,12 +9,13 @@ nav {
   background: #111;
   width: 100%;
   margin-bottom: 48px;
-  height: 48px;
+  height: 52px;
   line-height: 48px;
   color: #FFF;
   font-size: 24px;
   font-weight: 500;
   padding: 0 0 0 24px;
+  border-bottom: 1px solid #232323;
 }
 
 h1,h2,h3 { font-family: 'Exo 2', sans-serif; }
@@ -33,26 +34,11 @@ header h1 {
 .widget {
   background: #333;
   padding: 48px 12px;
-  min-height: 250px;
+  min-height: 280px;
   text-align: center;
   margin: 0 0 24px 0;
   color: #d3d4d4;
-  border-top: 12px solid rgba(255,255,255,0.1);
-}
-
-.led {
-  border-radius: 100%;
-  height: 15px;
-  width: 15px;
-  display: block;
-  background: #86b423;
-}
-
-.last {
-  margin-right: 0;
-}
-
-.full {
+  border-top: 6px solid rgba(255,255,255,0.05);
 }
 
 .widget .value {
@@ -60,12 +46,16 @@ header h1 {
   font-size: 48px;
 }
 
+.small-text .value {
+  font-size: 36px;
+}
+
 .red {
   background-color: #ec663c;
 }
 
 .green {
-  background-color: #47bbb3;
+  background-color: #78ab49;
 }
 
 .blue {

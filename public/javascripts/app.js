@@ -33,8 +33,9 @@
     }
 
     function randomData() {
-        return [['data1', randomInt(), 200, randomInt(), randomInt(), 250],
-                ['data2', randomInt(), randomInt(), randomInt(), 120, randomInt()]]
+        return [['Production', randomInt(), 200, randomInt(), randomInt(), 250],
+                ['Staging', randomInt(), randomInt(), randomInt(), 120, randomInt()],
+                ['Live AWS', randomInt(), randomInt(), randomInt(), 50, randomInt()]]
     }
 
     function generateChart() {

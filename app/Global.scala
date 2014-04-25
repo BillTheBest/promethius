@@ -16,6 +16,9 @@ object Global extends GlobalSettings {
 
     val c = new OnlineWidget("github-status", "http://github.com")
     Scheduler.start(c.run, 5)
+
+    val d = new BBCNewsWidget()
+    Scheduler.start(d.run, 5)
   }
 
   override def onStart(app: Application) {
