@@ -8,7 +8,7 @@ Reaktor is an easy to use monitoring dashboard written in Scala. It uses web soc
 to the board. The idea is to give you "just enough" to build great looking real-time dashboards
 while allowing you the freedom to customise things easily.
 
-![](https://raw.githubusercontent.com/owainlewis/ripley/master/public/images/pv.png)
+![](https://raw.githubusercontent.com/owainlewis/ripley/master/public/images/preview.png)
 
 ## Concept
 
