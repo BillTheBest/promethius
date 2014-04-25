@@ -28,6 +28,28 @@
         };
     }
 
-    window.onload = webSocketConnect();
+    function randomInt() {
+        return 10 + Math.abs(Math.random() * 1500);
+    }
+
+    function randomData() {
+        return [['data1', randomInt(), 200, randomInt(), randomInt(), 250],
+                ['data2', randomInt(), randomInt(), randomInt(), 120, randomInt()]]
+    }
+
+    function generateChart() {
+      var chart = c3.generate({
+        data: {
+          columns: randomData()
+        }
+      });
+      setInterval(function () {
+        chart.load({
+          columns: randomData()
+        });
+      }, 2000);
+    }
+
+    window.onload = function() { generateChart(); webSocketConnect(); }
 
 }());

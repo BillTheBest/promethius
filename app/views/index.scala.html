@@ -2,13 +2,9 @@
 
 @main("Dashboard") {
 
-  <header>
-    <h1>My Dashboard</h1>
-  </header>
-
   <div class="row">
     <div class="col-md-4">
-      <div data-key="github-status" class="widget red">
+      <div data-key="github-status" class="widget dark">
         <div class="value">LOADING...</div>
         <p>Showing status for github.com</p>
       </div>
@@ -31,28 +27,19 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div data-key="static" class="widget full dark">
+      <div class='chart widget full'>
+        <div id='chart'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div data-key="static" class="widget full blue">
         <div class="value">567</div>
         <p>Users in the last 20 minutes</p>
       </div>
     </div>
   </div>
-  
-  <div class="row">
-    <div class='chart'>
-      <div id='chart'></div>
-    </div>
-    
-    <script>
-        var chart = c3.generate({
-        data: {
-            columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-            ]
-        }
-        });  
-    </script>
-  </div>
- 
+
 }
