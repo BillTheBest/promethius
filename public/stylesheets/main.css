@@ -33,7 +33,7 @@ header h1 {
 .widget {
   background: #333;
   padding: 48px 12px;
-  min-height: 300px;
+  min-height: 250px;
   text-align: center;
   margin: 0 0 24px 0;
   color: #d3d4d4;
