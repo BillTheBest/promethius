@@ -14,6 +14,7 @@ nav {
   color: #FFF;
   font-size: 24px;
   font-weight: 500;
+  padding: 0 0 0 24px;
 }
 
 h1,h2,h3 { font-family: 'Exo 2', sans-serif; }
@@ -88,3 +89,7 @@ header h1 {
 }
 
 #chart { height: 300px; }
+
+@media only screen and (max-width : 1024px)  { 
+  .chart { display: none; }
+}

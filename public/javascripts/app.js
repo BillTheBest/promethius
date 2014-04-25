@@ -41,6 +41,9 @@
       var chart = c3.generate({
         data: {
           columns: randomData()
+        },
+        tooltip: {
+          show: false
         }
       });
       setInterval(function () {
