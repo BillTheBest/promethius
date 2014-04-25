@@ -4,7 +4,7 @@
 
 A demo is available at http://reaktordemo.herokuapp.com
 
-Ripley is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly
+Reaktor is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly
 to the board. The idea is to give you "just enough" to build great looking real-time dashboards
 while allowing you the freedom to customise things easily.
 
@@ -12,7 +12,7 @@ while allowing you the freedom to customise things easily.
 
 ## Concept
 
-Ripley is designed to be simple and easy to understand. There are two main concepts that you'll need to understand when creating widgets.
+Reaktor is designed to be simple and easy to understand. There are two main concepts that you'll need to understand when creating widgets.
 
 ### 1. Websocket Channel
 
