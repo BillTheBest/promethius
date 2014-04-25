@@ -1,4 +1,4 @@
-name := "ripley"
+name := "reaktor"
 
 version := "1.0-SNAPSHOT"
 

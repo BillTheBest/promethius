@@ -1,8 +1,8 @@
-# Ripley
+# Reaktor
 
 ### A fast and easy way to build a real time websocket dashboard
 
-A demo is available at http://ripley.herokuapp.com
+A demo is available at http://reaktordemo.herokuapp.com
 
 Ripley is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly
 to the board. The idea is to give you "just enough" to build great looking real-time dashboards
