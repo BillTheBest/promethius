@@ -1,12 +1,65 @@
+// Poly fill
+
+if (!('contains' in String.prototype)) {
+    String.prototype.contains = function(str, startIndex) {
+        return ''.indexOf.call(this, str, startIndex) !== -1;
+    };
+}
+
 (function() {
 
-    function updateMetric(key, value) {
+    /**
+     * Flatten a nested structure
+     *
+     */
+    function flatten(arr) {
+        return Array.prototype.concat.apply([], arr);
+    }
+
+    /*
+     * Helper function that converts a map to a matrix like
+     * format suitable for the D3.js chart library
+     *
+     */
+    function mapToData(obj) {
+        var result = [];
+        for (k in obj) {
+            result.push(flatten([k, obj[k]]));
+        }
+        return result;
+    }
+
+    function makeLineChart(key, data)  {
+        return c3.generate({
+            data: {
+                columns: data
+            },
+            tooltip: {
+                show: false
+            }
+        });
+    }
+
+    function isChartMetric(key) {
+        return key.contains("chart")
+    }
+
+    function renderStandardMetric(key, value) {
+
         var element = document.querySelector('[data-key="' + key + '"]');
         if(element) {
             element.querySelector(".value").innerHTML = value;
         } else {
             console.log("ERROR: Metric with key \"" + key + "\" given but no matching widget found");
+            console.log("Data is " + value);
         }
+    }
+
+    function updateMetric(key, value) {
+        if (isChartMetric(key))
+            console.log("Chart metric found");
+        else
+            renderStandardMetric(key, value);
     }
 
     function updateDashboard(message) {
@@ -29,29 +82,17 @@
     }
 
     function randomInt() {
-        return 10 + Math.abs(Math.random() * 1500);
+        return Math.floor(10 + Math.abs(Math.random() * 1500));
     }
 
     function randomData() {
-        return [['Production', randomInt(), 200, randomInt(), randomInt(), 250],
-                ['Staging', randomInt(), randomInt(), randomInt(), 120, randomInt()],
-                ['Live AWS', randomInt(), randomInt(), randomInt(), 50, randomInt()]]
+        var dataMap = { "key1" : [randomInt(), randomInt(), randomInt(), randomInt()],
+                        "key2" : [randomInt(), randomInt(), randomInt()] }
+        return mapToData(dataMap);
     }
 
     function generateChart() {
-      var chart = c3.generate({
-        data: {
-          columns: randomData()
-        },
-        tooltip: {
-          show: false
-        }
-      });
-      setInterval(function () {
-        chart.load({
-          columns: randomData()
-        });
-      }, 2000);
+      var chart = makeLineChart("chart-metrics", randomData());
     }
 
     window.onload = function() { generateChart(); webSocketConnect(); }
