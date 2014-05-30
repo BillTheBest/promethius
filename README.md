@@ -153,17 +153,19 @@ object Global extends GlobalSettings {
 
 ## Updating the widget
 
-Right now the widget should do idle. To update the widget make a HTTP post request to /api/metrics.
+Right now the widget should be idle. To update the widget make a HTTP post request to /api/metrics.
 
 Here is an example of how you might set this up in a Ruby on Rails application that calls log_error every time a 500 error occurs.
 
 ```ruby
 
-# When a 500 error happens in our Rails application, push the error message onto Reaktor
+# When a 500 error happens in our Rails application, 
+# push the error message onto Reaktor
 def log_error(error_message)
   # What we will post to the Reaktor API
   message = { 'key' => 'post-metric', 'value' => error_message }.to_json
-  RestClient.post "http://reaktor.mycompany.com/api/metrics", message, :content_type => :json
+  RestClient.post "http://reaktor.mycompany.com/api/metrics", 
+    message, :content_type => :json
 end
 ```
 
