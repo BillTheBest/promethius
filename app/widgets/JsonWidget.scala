@@ -6,7 +6,14 @@ import backend.SocketChannel
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.json._
 
-class TimeWidget(key: String) extends Widget {
+/**
+ * This is a simple widget that fetches JSON data from an external endpoint
+ * every time the run method is called
+ *
+ * It parses the time value out of the JSON response and pushes it to the socket channel
+ *
+ */
+class JsonWidget(key: String) extends Widget {
 
   private val url = "http://time.jsontest.com"
 

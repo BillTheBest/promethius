@@ -8,11 +8,11 @@ object Global extends GlobalSettings {
 
   def runWidgets() {
 
-    val a = new TimeWidget("time")
+    val a = new JsonWidget("time")
     Scheduler.start(a.run, 1)
 
     val b = new SimpleWidget("random-number")
-    Scheduler.start(b.run, 2)
+    Scheduler.start(b.run, 100)
 
     val c = new OnlineWidget("github-status", "http://github.com")
     Scheduler.start(c.run, 5)
@@ -22,6 +22,10 @@ object Global extends GlobalSettings {
 
     val e = new LineChartWidget("chart-metrics")
     Scheduler.start(e.run, 5)
+
+    // This widget sits IDLE waiting for incoming HTTP post requests and so does not need
+    // a scheduler
+    new PostWidget("post-metric")
   }
 
   override def onStart(app: Application) {
