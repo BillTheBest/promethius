@@ -9,7 +9,7 @@ object Scheduler {
 
   val system = ActorSystem("scheduler")
 
-  def start(f: () => Any, frequency: Int = Settings.pollFrequency) = {
+  def start(f: () ⇒ Any, frequency: Int = Settings.pollFrequency) = {
     println("Starting scheduler")
     system.scheduler.schedule(0 seconds, frequency seconds) { f() }
   }

@@ -3,6 +3,7 @@ import play.api._
 import actors._
 import play.api.Application
 import widgets._
+import widgets.examples._
 
 object Global extends GlobalSettings {
 

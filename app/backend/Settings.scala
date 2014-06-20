@@ -7,9 +7,8 @@ object Settings {
 
   val config = Play.configuration
 
-  /**
-   * How often to make polling updates
-   *
-   */
+  /** How often to make polling updates
+    *
+    */
   val pollFrequency = config.getInt("reaktor.pollingFrequency").getOrElse(5)
 }

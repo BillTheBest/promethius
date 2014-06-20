@@ -32,9 +32,9 @@ header h1 {
 }
 
 .widget {
-  background: #333;
+  background: #222;
   padding: 48px 12px;
-  min-height: 280px;
+  min-height: 220px;
   text-align: center;
   margin: 0 0 24px 0;
   color: #d3d4d4;
@@ -63,7 +63,7 @@ header h1 {
 }
 
 .dark {
-  background-color: #292929;
+  background-color: #222;
 }
 
 .aqua {

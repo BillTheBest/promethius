@@ -1,3 +1,6 @@
+import com.typesafe.sbt.SbtScalariform.ScalariformKeys
+import scalariform.formatter.preferences._
+
 name := "reaktor"
 
 version := "1.0-SNAPSHOT"
@@ -8,3 +11,12 @@ libraryDependencies ++= Seq(
 )     
 
 play.Project.playScalaSettings
+
+scalariformSettings
+
+ScalariformKeys.preferences := ScalariformKeys.preferences.value
+  .setPreference(RewriteArrowSymbols, true)
+  .setPreference(AlignParameters, true)
+  .setPreference(AlignSingleLineCaseStatements, true)
+  .setPreference(PlaceScaladocAsterisksBeneathSecondAsterisk, true)
+  .setPreference(MultilineScaladocCommentsStartOnFirstLine, true)

@@ -1,6 +1,6 @@
 package backend
 
-import play.api.libs.iteratee.{Iteratee, Concurrent, Enumerator}
+import play.api.libs.iteratee.{ Iteratee, Concurrent, Enumerator }
 import play.api.libs.iteratee.Concurrent.Channel
 import play.api.mvc.WebSocket
 import play.api.libs.concurrent.Execution.Implicits._
@@ -16,7 +16,7 @@ object SocketChannel {
     Json.stringify(Json.toJson(m))
   }
 
-  private val in = Iteratee.foreach[String] { msg => channel.push(msg) }
+  private val in = Iteratee.foreach[String] { msg ⇒ channel.push(msg) }
 
   def push(key: String, message: String) = {
     val m = Message(key, message)
@@ -24,7 +24,7 @@ object SocketChannel {
   }
 
   def get(): WebSocket[String] = {
-    WebSocket.using[String] { _ =>
+    WebSocket.using[String] { _ ⇒
       (in, out)
     }
   }

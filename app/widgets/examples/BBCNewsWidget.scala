@@ -1,9 +1,10 @@
-package widgets
+package widgets.examples
 
 // A simple example for an RSS widget
 
 import backend.SocketChannel
 import scala.xml._
+import widgets.Widget
 
 class BBCNewsWidget(key: String) extends Widget {
 
