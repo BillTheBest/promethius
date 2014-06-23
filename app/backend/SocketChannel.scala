@@ -6,11 +6,12 @@ import play.api.mvc.WebSocket
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.json._
 
-import models._
+import uk.co.bbc.models._
 
 object SocketChannel {
 
-  val (out: Enumerator[String], channel: Channel[String]) = Concurrent.broadcast[String]
+  val (out: Enumerator[String],
+    channel: Channel[String]) = Concurrent.broadcast[String]
 
   def asJsonString(m: Message) = {
     Json.stringify(Json.toJson(m))
