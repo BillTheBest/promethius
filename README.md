@@ -2,6 +2,14 @@
 
 ### A fast and easy way to build a real time websocket dashboard
 
+![](http://www.simonprior.com/wp-content/uploads/2014/06/prometheus1.jpg)
+
+## RoadMap
+
+* AWS Cloudwatch integration
+
+## About
+
 Promethius is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly
 to the board. The idea is to give you "just enough" to build great looking real-time dashboards
 while allowing you the freedom to customise things easily.

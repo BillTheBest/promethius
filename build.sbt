@@ -7,7 +7,8 @@ version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.2.3",
-  "com.typesafe.akka" %% "akka-contrib" % "2.2.3"
+  "com.typesafe.akka" %% "akka-contrib" % "2.2.3",
+  "com.amazonaws" % "aws-java-sdk" % "1.8.0"
 )     
 
 play.Project.playScalaSettings

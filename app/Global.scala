@@ -4,6 +4,7 @@ import actors._
 import play.api.Application
 import widgets._
 import widgets.examples._
+import metrics.AWSCloudwatch
 
 object Global extends GlobalSettings {
 
@@ -15,14 +16,9 @@ object Global extends GlobalSettings {
     val b = new SimpleWidget("random-number")
     Scheduler.start(b.run, 100)
 
-    val c = new OnlineWidget("github-status", "http://github.com")
+    val c = new BBCNewsWidget("bbc-news")
     Scheduler.start(c.run, 5)
 
-    val d = new BBCNewsWidget("bbc-news")
-    Scheduler.start(d.run, 5)
-
-    val e = new LineChartWidget("chart-metrics")
-    Scheduler.start(e.run, 5)
 
     // This widget sits IDLE waiting for incoming HTTP post requests and so does not need
     // a scheduler
