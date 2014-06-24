@@ -1,7 +1,7 @@
 import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 import scalariform.formatter.preferences._
 
-name := "reaktor"
+name := "promethius"
 
 version := "1.0-SNAPSHOT"
 

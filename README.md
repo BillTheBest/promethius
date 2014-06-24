@@ -1,10 +1,8 @@
-# Reaktor
+# Promethius
 
 ### A fast and easy way to build a real time websocket dashboard
 
-A demo is available at http://reaktordemo.herokuapp.com
-
-Reaktor is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly
+Promethius is an easy to use monitoring dashboard written in Scala. It uses web sockets to push real time updates directly
 to the board. The idea is to give you "just enough" to build great looking real-time dashboards
 while allowing you the freedom to customise things easily.
 
@@ -17,7 +15,7 @@ There are two ways to use the dashboard.
 
 ## Concept
 
-Reaktor is designed to be simple and easy to understand. There are only really two main concepts that you'll need to understand when creating widgets.
+Promethius is designed to be simple and easy to understand. There are only really two main concepts that you'll need to understand when creating widgets.
 
 ### 1. Websocket Channel
 
@@ -110,10 +108,10 @@ object MyApp {
 
 ## API
 
-Reaktor exposes a very simple API that lets you push data to the board. This might be the easiest option if you don't want to mess with Scala code too much.
+Promethius exposes a very simple API that lets you push data to the board. This might be the easiest option if you don't want to mess with Scala code too much.
 
 Let's start with a simple example. We have a web application that we want to monitor for 500 errors. Every time a 500 error happens in our web app we want to update
-our reaktor dashboard to display the error.
+our Promethius dashboard to display the error.
 
 To do this we only need to do two things.
 
@@ -160,9 +158,9 @@ Here is an example of how you might set this up in a Ruby on Rails application t
 ```ruby
 
 # When a 500 error happens in our Rails application, 
-# push the error message onto Reaktor
+# push the error message onto Promethius
 def log_error(error_message)
-  # What we will post to the Reaktor API
+  # What we will post to the Promethius API
   message = { 'key' => 'post-metric', 'value' => error_message }.to_json
   RestClient.post "http://reaktor.mycompany.com/api/metrics", 
     message, :content_type => :json
