@@ -2,7 +2,7 @@
 
 ### A fast and easy way to build a real time websocket dashboard
 
-![](http://www.simonprior.com/wp-content/uploads/2014/06/prometheus1.jpg)
+![](https://feminema.files.wordpress.com/2012/06/prometheus-film-head.jpg)
 
 ## RoadMap
 
