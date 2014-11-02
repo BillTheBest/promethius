@@ -4,9 +4,22 @@
 
 ![](https://feminema.files.wordpress.com/2012/06/prometheus-film-head.jpg)
 
-## RoadMap
+## Deployment
 
-* AWS Cloudwatch integration
+This dashboard can be pushed to Heroku in under a minute.
+
+1. Fork repo
+2. git clone your-fork
+3. heroku create
+4. git push heroku master
+
+## Demo 
+
+A live demo is available for the https://vacancy.io metrics page. 
+
+Please bear in mind this might be a bad example since our stats don't change to frequently.
+
+http://promethius-demo.herokuapp.com
 
 ## About
 
