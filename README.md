@@ -36,7 +36,11 @@ There are two ways to use the dashboard.
 
 ## Concept
 
-Promethius is designed to be simple and easy to understand. There are only really two main concepts that you'll need to understand when creating widgets.
+Promethius is designed to be simple and easy to understand. 
+There are only really two main concepts that you'll need to understand when creating widgets.
+
+1. Write a function that pushes data to a websocket channel. Run this on a scheduler
+2. Create a html item on the front end with the correct data attribute to display it.
 
 ### 1. Websocket Channel
 
