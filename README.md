@@ -1,8 +1,10 @@
 # Promethius
 
-### A fast and easy way to build a real time websocket dashboard
+### A fast and easy way to build a real time web-socket dashboard
 
 ![](https://feminema.files.wordpress.com/2012/06/prometheus-film-head.jpg)
+
+Promethius lets you build simple *live* dashboards that update themselves in real time.
 
 ## Deployment
 
@@ -17,7 +19,7 @@ This dashboard can be pushed to Heroku in under a minute.
 
 A live demo is available for the https://vacancy.io metrics page. 
 
-Please bear in mind this might be a bad example since our stats don't change to frequently.
+Please bear in mind this might be a bad example since our stats don't change too frequently.
 
 http://promethius-demo.herokuapp.com
 
