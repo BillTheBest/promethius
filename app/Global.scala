@@ -8,6 +8,11 @@ import metrics.AWSCloudwatch
 
 object Global extends GlobalSettings {
 
+  /**
+   * This is the main entry point for kicking off any workers
+   * 
+   * All widgets must be attached to a Scheduler for the dashboard to update
+   */
   def runWidgets() {
 
     val a = new JsonWidget("vacancy")
