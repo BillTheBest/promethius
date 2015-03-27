@@ -27,7 +27,7 @@ This dashboard can be pushed to Heroku in under a minute.
 
 Promethius exposes a very simple API that lets you push data to the board. This might be the easiest option if you don't want to mess with Scala code too much.
 
-1. Our markup
+## Create the markup
 
 ```html
 <div class="col-md-6">
@@ -35,7 +35,7 @@ Promethius exposes a very simple API that lets you push data to the board. This 
 </div>
 ```
 
-2. Push data to our channel
+## Push data to a matching channel
 
 We perform a HTTP post and set the counter value to be equal to 1. The dashboard will update in real time to display the value
 
