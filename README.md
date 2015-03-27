@@ -57,23 +57,24 @@ There are only really three main concepts that you'll need to understand when cr
 2. Create a html item on the front end with the correct data attribute to display it
 3. Optionally "poll" a service for new data using a Scheduler
 
-### 1. Websocket Channel
+### 1. Web Socket Stream
 
-A global web-socket channel is exposed in Scala code to which you can push data to. You push a "key" and a "value" to the channel. I.e
+A global web socket stream is exposed in Scala code to which you can push data to. You push a "key" and a "value" to the stream. I.e
 
 ```scala
 
-import backend.SocketChannel
+import backend.SocketStream
 
 // Send a message to the channel. **Note that the value must be a string**
 
-SocketChannel.push("greeting", "OH HAI")
+SocketStream.push("greeting", "OH HAI")
 
 ```
 
 You can think of all events in the system as messages with a key and a value.
 
 When an event is pushed to the channel, the JavaScript front end looks for the key and a HTML entity with a data-key value set.
+
 If it finds one the front end HTML gets updated in real time.
 
 ```html
@@ -113,12 +114,12 @@ Some example widgets are available in app/widgets to help you get started
 ```scala
 package widgets
 
-import backend.SocketChannel
+import backend.SocketStream
 import scala.util.Random.nextInt
 
 class SimpleWidget(key: String) extends Widget {
   def run() = {
-    SocketChannel.push(key, nextInt(1000).toString)
+    SocketStream.push(key, nextInt(1000).toString)
   }
 }
 ```
