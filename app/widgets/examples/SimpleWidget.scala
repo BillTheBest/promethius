@@ -1,6 +1,6 @@
 package widgets.examples
 
-import backend.SocketChannel
+import backend.SocketStream
 import scala.util.Random.nextInt
 import widgets.Widget
 
@@ -11,6 +11,6 @@ import widgets.Widget
 class SimpleWidget(key: String) extends Widget {
 
   def run() = {
-    SocketChannel.push(key, nextInt(1000).toString)
+    SocketStream.push(key, nextInt(1000).toString)
   }
 }

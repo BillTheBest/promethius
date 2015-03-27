@@ -1,6 +1,6 @@
 package widgets.examples
 
-import backend.SocketChannel
+import backend.SocketStream
 import play.api.libs.json.Json
 import widgets.Widget
 
@@ -12,6 +12,6 @@ class LineChartWidget(key: String) extends Widget {
 
     val metricJson = Json.stringify(Json.toJson(metrics))
 
-    SocketChannel.push(key, metricJson)
+    SocketStream.push(key, metricJson)
   }
 }

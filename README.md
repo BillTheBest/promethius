@@ -15,13 +15,25 @@ This dashboard can be pushed to Heroku in under a minute.
 3. heroku create
 4. git push heroku master
 
-## Demo 
+## API
 
-A live demo is available for the https://vacancy.io metrics page. 
+Promethius exposes a very simple API that lets you push data to the board. This might be the easiest option if you don't want to mess with Scala code too much.
 
-Please bear in mind this might be a bad example since our stats don't change too frequently.
+1. Our markup
 
-http://promethius-demo.herokuapp.com
+```html
+<div class="col-md-6">
+  @channel("counter", Some("A simple counter channel"))
+</div>
+```
+
+2. Push data to our channel
+
+We perform a HTTP post and set the counter value to be equal to 1. The dashboard will update in real time to display the value
+
+```
+curl -iX POST http://localhost:9000/api/events -d '{"key": "counter","value": "1"}' -H "Content-Type: application/json"
+```
 
 ## About
 
@@ -39,10 +51,11 @@ There are two ways to use the dashboard.
 ## Concept
 
 Promethius is designed to be simple and easy to understand. 
-There are only really two main concepts that you'll need to understand when creating widgets.
+There are only really three main concepts that you'll need to understand when creating channels.
 
-1. Write a function that pushes data to a websocket channel. Run this on a scheduler
-2. Create a html item on the front end with the correct data attribute to display it.
+1. Write a function that pushes data to a channel
+2. Create a html item on the front end with the correct data attribute to display it
+3. Optionally "poll" a service for new data using a Scheduler
 
 ### 1. Websocket Channel
 
@@ -113,9 +126,7 @@ class SimpleWidget(key: String) extends Widget {
 Now the markup which lives in app/views/index.html
 
 ```html
-<div data-key="random-number" class="widget blue">
-  <div class="value"></div>
-</div>
+@channel("random-number", Some("A random number channel"))
 ```
 
 And finally let's hook up the widget to a scheduler and run it every 5 seconds. This is done in app/Global.scala
@@ -133,66 +144,7 @@ object MyApp {
 }
 ```
 
-## API
 
-Promethius exposes a very simple API that lets you push data to the board. This might be the easiest option if you don't want to mess with Scala code too much.
-
-Let's start with a simple example. We have a web application that we want to monitor for 500 errors. Every time a 500 error happens in our web app we want to update
-our Promethius dashboard to display the error.
-
-To do this we only need to do two things.
-
-1. Create the widget to be updated on the front end.
-2. Make a HTTP post request with JSON data to /api/metrics
-
-## Creating the widget
-
-Let's create the widget. We need to add the widget HTML to the front end.
-
-In app/views/index.scala.html add the following code
-
-```html
-<div class="col-md-4">
-  <div data-key="post-widget" class="widget green">
-  <div class="value">AWAITING...</div>
-  </div>
-</div>
-```
-
-We now need to create a new PostWidget instance in app/Global.scala and give it the correct key
-
-Your code should look something like this.
-
-```scala
-object Global extends GlobalSettings {
-
-  def runWidgets() {
-
-    // This is where we create our widget with a key of "post-metric"
-    new PostWidget("post-metric")
-  }
-
-  // ...
-}
-```
-
-## Updating the widget
-
-Right now the widget should be idle. To update the widget make a HTTP post request to /api/metrics.
-
-Here is an example of how you might set this up in a Ruby on Rails application that calls log_error every time a 500 error occurs.
-
-```ruby
-
-# When a 500 error happens in our Rails application, 
-# push the error message onto Promethius
-def log_error(error_message)
-  # What we will post to the Promethius API
-  message = { 'key' => 'post-metric', 'value' => error_message }.to_json
-  RestClient.post "http://reaktor.mycompany.com/api/metrics", 
-    message, :content_type => :json
-end
-```
 
 ## Want to help?
 

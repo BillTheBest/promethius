@@ -1,36 +1,14 @@
-@(message: String)
-
 @main("Dashboard") {
 
-  <div class="row">
-    <div class="col-md-6">
-      <div data-key="users" class="widget blue">
-        <p>Number of registered users</p>
-        <div class="value">Loading...</div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div data-key="companies" class="widget green">
-        <p>Number of companies signed up</p>
-        <div class="value">Loading...</div>
-      </div>
-    </div>
+  <div class="col-md-6">
+    @channel("active-users", Some("Active users"), Some("blue"))
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div data-key="last-user-sign-up" class="widget dark">
-        <p>Last user sign up</p>
-        <div class="value">Loading...</div>
-      </div>
-    </div>
+  <div class="col-md-6">
+    @channel("counter", Some("A simple counter channel"))
+  </div>
 
-    <div class="col-md-6">
-      <div data-key="last-company-sign-up" class="widget">
-        <p>Last company sign up</p>
-        <div class="value">Loading...</div>
-      </div>
-    </div>
+  <div class="col-md-12">
+      @channel("news", Some("A real time news widget"))
   </div>
 }

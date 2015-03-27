@@ -2,7 +2,7 @@ package widgets.examples
 
 // A simple example for an RSS widget
 
-import backend.SocketChannel
+import backend.SocketStream
 import scala.xml._
 import widgets.Widget
 
@@ -14,11 +14,10 @@ class BBCNewsWidget(key: String) extends Widget {
     (node \\ "title").text
   }
 
-  def run() = {
-    val root: Elem = XML.load(url)
-    val stories: List[String] = (root \\ "item").map(parseNode).toList
+  def run(): Unit = {
+    val stories: List[String] = (XML.load(url) \\ "item").map(parseNode).toList
     val story: String = stories.head
 
-    SocketChannel.push(key, story)
+    SocketStream.push(key, story)
   }
 }

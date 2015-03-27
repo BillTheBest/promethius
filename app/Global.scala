@@ -1,22 +1,19 @@
 
 import play.api._
-import actors._
 import play.api.Application
-import widgets._
 import widgets.examples._
-import metrics.AWSCloudwatch
+import actors.Scheduler
 
 object Global extends GlobalSettings {
 
-  /**
-   * This is the main entry point for kicking off any workers
-   * 
-   * All widgets must be attached to a Scheduler for the dashboard to update
-   */
+  /** This is the main entry point for kicking off any workers
+    *
+    * All widgets must be attached to a Scheduler for the dashboard to update
+    */
   def runWidgets() {
 
-    val a = new JsonWidget("vacancy")
-    Scheduler.start(a.run, 10)
+    val news = new BBCNewsWidget("news")
+    Scheduler.start(news.run, 10)
   }
 
   override def onStart(app: Application) {

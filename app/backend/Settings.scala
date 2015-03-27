@@ -10,5 +10,5 @@ object Settings {
   /** How often to make polling updates
     *
     */
-  val pollFrequency = config.getInt("reaktor.pollingFrequency").getOrElse(5)
+  val pollFrequency = config.getInt("promethius.pollingFrequency").getOrElse(5)
 }

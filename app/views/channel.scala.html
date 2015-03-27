@@ -1,0 +1,6 @@
+@(key: String, description: Option[String] = None, color: Option[String] = None)
+
+<div data-key="@key" class='widget @color.getOrElse("dark")'>
+  <p>@description.getOrElse("")</p>
+  <div class="value">No Data</div>
+</div>

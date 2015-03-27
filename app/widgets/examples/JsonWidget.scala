@@ -1,7 +1,7 @@
 package widgets.examples
 import scala.concurrent.Future
 import play.api.libs.ws.WS
-import backend.SocketChannel
+import backend.SocketStream
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.json._
 import widgets.Widget
@@ -20,10 +20,10 @@ class JsonWidget(key: String) extends Widget {
                      companies: Int,
                      lastUserSignUp: String,
                      lastCompanySignUp: String): Unit = {
-    SocketChannel.push("users", users.toString)
-    SocketChannel.push("companies", companies.toString)
-    SocketChannel.push("last-user-sign-up", lastUserSignUp)
-    SocketChannel.push("last-company-sign-up", lastCompanySignUp)
+    SocketStream.push("users", users.toString)
+    SocketStream.push("companies", companies.toString)
+    SocketStream.push("last-user-sign-up", lastUserSignUp)
+    SocketStream.push("last-company-sign-up", lastCompanySignUp)
   }
 
   def run(): Future[Unit] = {

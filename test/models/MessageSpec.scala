@@ -1,10 +1,10 @@
 package models
 
+import models.Message
 import org.junit.runner.RunWith
 import org.specs2.mutable._
 import org.specs2.runner._
 import play.api.libs.json._
-import uk.co.bbc.models._
 
 @RunWith(classOf[JUnitRunner])
 class MessageSpec extends Specification {
