@@ -1,11 +1,9 @@
 package controllers
 
-import play.api.mvc._
-import play.api.libs.iteratee.{ Enumerator, Concurrent, Iteratee }
-import play.api.libs.iteratee.Concurrent.Channel
-import play.api.libs.concurrent.Execution.Implicits._
-import scala.concurrent.Future
 import backend.SocketStream
+import play.api.libs.concurrent.Execution.Implicits._
+import play.api.mvc._
+import scala.concurrent.Future
 
 object Application extends Controller {
 

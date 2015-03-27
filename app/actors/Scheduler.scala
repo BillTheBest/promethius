@@ -11,7 +11,7 @@ object Scheduler {
 
   /** Start the scheduler
     */
-  def start(f: () ⇒ Any, frequency: Int = Settings.pollFrequency) = {
-    system.scheduler.schedule(0 seconds, frequency seconds) { f() }
+  def start(f: () => Any, frequency: Int = Settings.pollFrequency) = {
+    system.scheduler.schedule(0.seconds, frequency.seconds) { f() }
   }
 }

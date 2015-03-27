@@ -4,7 +4,15 @@
 
 ![](https://feminema.files.wordpress.com/2012/06/prometheus-film-head.jpg)
 
-Promethius lets you build simple *live* dashboards that update themselves in real time.
+Promethius lets you quickly build reactive dashboards that update themselves in real time.
+
+## How
+
+Promethius can do two things.
+
+1. Poll for data and update itself it real time (perfect for real time monitoring or dashboards)
+
+2. Receive "push" messages and update itself in real time
 
 ## Deployment
 

@@ -21,12 +21,12 @@ object Events extends Controller {
     */
   def create = Action.async(parse.json) { request ⇒
     request.body.validate[Message].fold(
-      errors ⇒ {
+      errors => {
         Future(
           BadRequest("Invalid message")
         )
       },
-      message ⇒ {
+      message => {
         Future {
           SocketStream.push(message.key, message.value)
           Ok("Event accepted").as("application/json")

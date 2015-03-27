@@ -18,15 +18,17 @@ object SocketStream {
 
   private val in = Iteratee.foreach[String] { msg ⇒ channel.push(msg) }
 
-  /** Push a message onto the stream
-    */
+  /**
+   * Push a message into the stream
+   */
   def push(key: String, message: String): Unit = {
     val m = Message(key, message)
     channel.push(asJsonString(m))
   }
 
-  /** Fetch from the stream
-    */
+  /**
+   * Get a reference to the web socket stream
+   */
   def get(): WebSocket[String] = {
     WebSocket.using[String] { _ ⇒
       (in, out)

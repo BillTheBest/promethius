@@ -1,10 +1,10 @@
-package widgets.examples
+package channels.examples
 import scala.concurrent.Future
 import play.api.libs.ws.WS
 import backend.SocketStream
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.json._
-import widgets.Widget
+import channels.Channel
 
 /** This is a simple widget that fetches JSON data from an external endpoint
   * every time the run method is called
@@ -12,7 +12,7 @@ import widgets.Widget
   * It parses the time value out of the JSON response and pushes it to the socket channel
   *
   */
-class JsonWidget(key: String) extends Widget {
+class JsonChannel(key: String) extends Channel[Future[Unit]] {
 
   private val url = "https://vacancy.io/api/v1/stats"
 
