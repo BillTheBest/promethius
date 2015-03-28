@@ -21,15 +21,13 @@
      * Render a standard metric response
      *
      * @param { } key
-     * @param { } valuey
+     * @param { } value
      */
     function renderStandardMetric(key, value) {
         var element = document.querySelector('[data-key="' + key + '"]');
-        if (element)
+        if (element) {
             element.querySelector(".value").innerHTML = value;
-        else
-            console.log("ERROR: Metric with key \"" + key + "\" given but no matching widget found");
-            console.log("Data is " + value);
+        }
     }
 
     /**
@@ -38,6 +36,7 @@
      * @param { } message
      */
     function updateDashboard(message) {
+        console.log("Message: " + message);
         var m = JSON.parse(message.data);
         renderStandardMetric(m.key, m.value);
     }
@@ -56,10 +55,6 @@
             console.log("Web socket connected");
             ws.onmessage = updateDashboard;
         };
-    }
-
-    function randomInt() {
-        return Math.floor(10 + Math.abs(Math.random() * 1500));
     }
 
     window.onload = webSocketConnect;
