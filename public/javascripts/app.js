@@ -30,6 +30,27 @@
         }
     }
 
+    function renderJsonMetric(key, value) {
+      var element = document.querySelector('[data-key="' + key + '"]');
+      var json = JSON.parse(value);
+      for (k in json) {
+        if (json.hasOwnProperty(k)) {
+          element.dataset[k] = json[k];
+          // TODO scrappy as shit
+          var e = document.querySelector('.' + k);
+          console.log('.' + k);
+          if (e) { {
+            if (e.nodeName == "IMG") {
+              e.setAttribute('src', json[k]);
+            } else {
+              e.innerHTML = json[k];
+              }
+            }
+          }
+        }
+      }
+    }
+
     /**
      * When a metric is sent, render it to the front end
      *
@@ -38,7 +59,12 @@
     function updateDashboard(message) {
         console.log("Message: " + message);
         var m = JSON.parse(message.data);
-        renderStandardMetric(m.key, m.value);
+
+        if (m.key.indexOf('json-') === 0) {
+          renderJsonMetric(m.key, m.value);
+        } else {
+          renderStandardMetric(m.key, m.value);
+        }
     }
 
     /**
